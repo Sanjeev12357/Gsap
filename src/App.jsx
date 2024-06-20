@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useRef } from 'react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Svg from './Svg';
 gsap.registerPlugin(ScrollTrigger);
 function App() {
   const [count, setCount] = useState(0);
@@ -117,22 +118,22 @@ gsap.from(".page3 .box",{
   rotate:360,
   
 })*/}
-
-gsap.to(".page2 div",{
-  transform:"translateX(-150%)",
-  scrollTrigger:{
-    trigger:".page2",//when we use the property pin we only write the aprent in the trigger property
+//Horizontal Scroll
+// gsap.to(".page2 div",{
+//   transform:"translateX(-150%)",
+//   scrollTrigger:{
+//     trigger:".page2",//when we use the property pin we only write the aprent in the trigger property
 
     
-    markers:true,
-    start:"top 0%",
-    end:"top -100%",
-    scrub:2,
-    pin:true,
+//     markers:true,
+//     start:"top 0%",
+//     end:"top -100%",
+//     scrub:2,
+//     pin:true,
     
 
-  }
-})
+//   }
+// })
 
 
 
@@ -179,7 +180,8 @@ gsap.to(".page2 div",{
     </div>
     */}
  
-    <div className="page1 h-[100%] w-[100%] bg-black">
+    {/**
+       <div className="page1 h-[100%] w-[100%] bg-black">
       <div className="box">
       </div>
     </div>
@@ -192,6 +194,8 @@ gsap.to(".page2 div",{
   <div className="box">
   </div>
 </div>
+      */}
+   <Svg/>
  
     </div>
     
