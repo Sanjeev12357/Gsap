@@ -5,9 +5,11 @@ import './App.css'
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { useRef } from 'react';
-
+import { BiMenu } from 'react-icons/bi';
+import { CgClose } from 'react-icons/cg';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Svg from './Svg';
+import Textanim from './Textanim';
 gsap.registerPlugin(ScrollTrigger);
 function App() {
   const [count, setCount] = useState(0);
@@ -15,6 +17,7 @@ function App() {
   const cursor=useRef(null);
   const imagediv=useRef(null);
   var t1=gsap.timeline();
+  const [show,setShow]=useState(false);
   useGSAP(()=>{
     // t1.to('.box',
     //    {
@@ -139,10 +142,16 @@ gsap.from(".page3 .box",{
 //   }
 // })
 
-var image=imagediv.current;
+
+
+{
+  /*
+
+ // Cursor animation
+
+
+  var image=imagediv.current;
 var cursorref=cursor.current;
-
-
 main.current.addEventListener("mousemove",function(dets){
     gsap.to(".cursor",{
       x:dets.x,
@@ -176,15 +185,64 @@ image.addEventListener("mouseleave",function(){
   })
 })
 
+  */
+}
+
+
+
+
+t1.to("#full",{
+  right:0,
+  duration:0.6,
+})
+
+t1.from("#full h4",{
+  x:150,
+  duration:0.7,
+  stagger:0.2,
+  opacity:0,
+})
+
+t1.from("#full .icon",{
+  opacity:0,
+})
+
+t1.pause();
 
 
 
   })
   return (
-   <>
-   <div ref={cursor} className=' z-10 cursor  flex items-center text-center justify-center text-[6px]  h-[20px] w-[20px] fixed  rounded-full bg-white'></div>
-   <div ref={main} className='main flex items-center justify-center bg-black h-[100vh] '>
-    <div  ref={imagediv}  className='Image relative h-[30vh] w-[60vw] '>
+   <div className='overflow-y-hidden overflow-x-hidden'>
+   {/** <div ref={cursor} className=' z-10 cursor  flex items-center text-center justify-center text-[6px]  h-[20px] w-[20px] fixed  rounded-full bg-white'></div> */}
+  
+  {
+    /**
+      <div ref={main} className='main w-[100vw]   h-[100vh] bg-black '>
+   
+    <div id="nav" className='flex items-center text-white justify-between px-[40px] py-[50px]'>
+
+        <h3 className='text-3xl'>Sanjeev</h3>
+       <BiMenu  onClick={()=>{
+          t1.play();
+       }} className='text-3xl cursor-pointer font-bold'/>
+    </div>
+
+    <div id="full" className=' h-[100%]  text-[#ffffffac] px-[30px] py-[100px] w-[40%] absolute bg-[#ffffff69] top-0 right-[-40%] backdrop-blur-xl'>
+      <h4 className='text-4xl font-bold mb-[10px]'>Work</h4>
+      <h4 className='text-4xl font-bold mb-[10px]'>About</h4>
+      <h4 className='text-4xl font-bold mb-[10px]'>Services</h4>
+      <h4 className='text-4xl font-bold mb-[10px]'>Contact</h4>
+      <h4 className='text-4xl font-bold mb-[10px]'>About</h4>
+
+      <CgClose onClick={()=>{t1.reverse()}} className='icon cursor-pointer absolute top-[5%] text-xl font-bold text-black  rounded-full right-[10%] bg-white'/>
+    </div>
+   
+   {
+    /**
+     * 
+     * cursor animation
+     *  <div  ref={imagediv}  className='Image relative h-[30vh] w-[60vw] '>
     
     <img
    
@@ -194,70 +252,76 @@ image.addEventListener("mouseleave",function(){
     />
     <div className='overlay bg-transparent z-20 w-[100%] h-[100%] absolute'></div>
     </div>
-{/**
- <div className="box rounded-full w-[300px] h-[300px] bg-red-300"></div>
-<div className="box2 rounded-full w-[300px] h-[300px] bg-red-300"></div>
-<div className="box3 rounded-full w-[300px] h-[300px] bg-red-300"></div>
- 
- <h1 className='text-white '>Hello I am Sanjeev</h1>
- <h1 className='text-white'>Hello </h1>
- <h1 className='text-white'>Hello Buddy</h1>
- */}
-
- {/**
-   Navbar
-    <div className="flex pt-4 text-white items-center justify-between">
-   <h1>DevGods</h1>
-   <div className="flex gap-2 items-center justify-between">
-     <h4>Home</h4>
-     <h4>About</h4>
-     <h4>Projects</h4>
-     <h4>Contact</h4>
-   </div>
- </div>
- <h2 className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white text-5xl">
- Sanjeev Portfolio
-</h2>
-   */}
-
-  {/**
-   Scroll trigger
-    <div className="page1 h-[100%] flex items-center justify-center w-[100%] bg-blue-300">
-     <div className="box h-[300px] bg-red-400 w-[300px]"></div>
-   </div>
-   <div className="page2 h-[100%]  flex items-center justify-center  w-[100%] bg-blue-500">
-   <div className="box h-[300px] bg-red-400 w-[300px]"></div>
-   </div>
-   <div className="page3 h-[100%]   flex items-center justify-center w-[100%] bg-blue-800">
-   <div className="box h-[300px] bg-red-400 w-[300px]"></div>
-   </div>
-   */}
-
+     */
+   }
+   
    {/**
-      <div className="page1 h-[100%] w-[100%] bg-black">
-     <div className="box">
-     </div>
+    <div className="box rounded-full w-[300px] h-[300px] bg-red-300"></div>
+   <div className="box2 rounded-full w-[300px] h-[300px] bg-red-300"></div>
+   <div className="box3 rounded-full w-[300px] h-[300px] bg-red-300"></div>
+    
+    <h1 className='text-white '>Hello I am Sanjeev</h1>
+    <h1 className='text-white'>Hello </h1>
+    <h1 className='text-white'>Hello Buddy</h1>
+    */}
+   
+    {/**
+      Navbar
+       <div className="flex pt-4 text-white items-center justify-between">
+      <h1>DevGods</h1>
+      <div className="flex gap-2 items-center justify-between">
+        <h4>Home</h4>
+        <h4>About</h4>
+        <h4>Projects</h4>
+        <h4>Contact</h4>
+      </div>
+    </div>
+    <h2 className="absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white text-5xl">
+    Sanjeev Portfolio
+   </h2>
+      */}
+   
+     {/**
+      Scroll trigger
+       <div className="page1 h-[100%] flex items-center justify-center w-[100%] bg-blue-300">
+        <div className="box h-[300px] bg-red-400 w-[300px]"></div>
+      </div>
+      <div className="page2 h-[100%]  flex items-center justify-center  w-[100%] bg-blue-500">
+      <div className="box h-[300px] bg-red-400 w-[300px]"></div>
+      </div>
+      <div className="page3 h-[100%]   flex items-center justify-center w-[100%] bg-blue-800">
+      <div className="box h-[300px] bg-red-400 w-[300px]"></div>
+      </div>
+      */}
+   
+      {/**
+         <div className="page1 h-[100%] w-[100%] bg-black">
+        <div className="box">
+        </div>
+      </div>
+      <div className="page2 overflow-x-hidden h-[100%] w-[100%] bg-blue-200">
+      <div className="box text-[30vw] font-bold uppercase">
+      Experineces
+      </div>
+    </div>
+    <div className="page3 h-[100%] w-[100%] bg-black">
+    <div className="box">
+    </div>
    </div>
-   <div className="page2 overflow-x-hidden h-[100%] w-[100%] bg-blue-200">
-   <div className="box text-[30vw] font-bold uppercase">
-   Experineces
+        */}
+    {
+     /**
+      * 
+      *  <Svg/>
+      
+    }
+    
+   
+      </div>
+     */
+  }
+  <Textanim/>
    </div>
- </div>
- <div className="page3 h-[100%] w-[100%] bg-black">
- <div className="box">
- </div>
-</div>
-     */}
- {
-  /**
-   * 
-   *  <Svg/>
-   */
- }
- 
-
-   </div>
-   </>
     
   )
 }
