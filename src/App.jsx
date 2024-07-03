@@ -10,6 +10,7 @@ import { CgClose } from 'react-icons/cg';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Svg from './Svg';
 import Textanim from './Textanim';
+import Skills from './Skills';
 gsap.registerPlugin(ScrollTrigger);
 function App() {
   const [count, setCount] = useState(0);
@@ -201,6 +202,7 @@ t1.from("#full h4",{
   duration:0.7,
   stagger:0.2,
   opacity:0,
+ 
 })
 
 t1.from("#full .icon",{
@@ -320,7 +322,11 @@ t1.pause();
       </div>
      */
   }
-  <Textanim/>
+
+    <Textanim/>
+    <Skills/>
+   
+
    </div>
     
   )

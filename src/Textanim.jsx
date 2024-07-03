@@ -1,6 +1,7 @@
 import React from 'react'
 import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
+import Skills from './Skills'
 const Textanim = () => {
     useGSAP(()=>{
        
@@ -85,7 +86,9 @@ const Textanim = () => {
                 </div>
             </div>
         </div>
-        <div className='page3 h-[100vh] w-[100%]'></div>
+        <div className='page3 h-[100vh] w-[100%]'>
+       
+        </div>
     </div>
   )
 }
