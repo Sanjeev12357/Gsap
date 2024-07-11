@@ -1,70 +1,87 @@
-import React from 'react'
-import './App.css';
-import gsap from 'gsap';
-import { useGSAP } from '@gsap/react';
-import { useRef } from 'react';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
+import React, { useEffect } from 'react'
+import gsap from 'gsap'
+import "./App.css"
+import {useGSAP} from "@gsap/react"
+import { useRef } from 'react'
 const App = () => {
-  var first=useRef(null);
- 
-  
-  
+  const href=useRef(null);
   useGSAP(()=>{
-    // var h1Text=first.current.textContent;
-    // var splitedText=h1Text.split("");
-    //   var clutter="";
-    // splitedText.map(function(elem){
     
-    //   console.log(elem);
-    //   clutter+=`<span>${elem === " " ? "&nbsp;" : elem}</span>`;
-    // })
-    // //console.log(clutter);
-    // first.current.innerHTML=clutter;
-
-    var allH1=document.querySelectorAll("#page2 h1");
-    allH1.forEach(function(elem){
-      var h1Text=elem.textContent;
-      var splitedText=h1Text.split("");
-        var clutter="";
-      splitedText.map(function(e){
+    var h5time=href.current;
+    var tl=gsap.timeline();
+    tl.from(".line h1",{
+      y:150,
+      stagger:0.25,
+      duration:0.6,
+      delay:0.5,
       
-        console.log(e);
-        clutter+=`<span>${e === " " ? "&nbsp;" : e}</span>`;
-      })
-      //console.log(clutter);
-      elem.innerHTML=clutter;
     })
-    gsap.to("#page2 h1 span",{
-      color:"#E3E3C4",
-      stagger:0.1,
-      scrollTrigger:{
-        trigger:"#page2 h1",
-        scroller:"body",
-        markers:true,
-        start:"top 50%",
-        end:"top -10%",
-        scrub:1,
-
+    tl.from("#line1-part1",{
+      opacity:0,
+      onStart:()=>{
+        
+        var grow=0;
+        setInterval(function(){
+          if(grow<100){
+            grow++;
+            h5time.innerHTML=grow;
+          }else{
+            grow=100;
+          }
+        },33)
       }
     })
+
+    tl.to(".line h2",{
+      animationName:"anime",
+      opacity:1,
+    })
+
+    tl.to("#loader",{
+      opacity:0,
+      duration:0.2,
+      delay:4
+    })
+    tl.to("#loader",{
+      display:"none",
+    })
+    tl.from("#page1",{
+      delay:0.2,
+      y:1600,
+      duration:0.6,
+      ease:"power4.out",
+     
+     
+    
+    })
+   
+   
   })
   return (
-    <div id="main">
-      <div id="page1"></div>
-      <div id="page2">
-        <h1 ref={first} id="first">Set within the </h1>
-        <h1>verdant pine and </h1>
-        <h1>oak tree forest of </h1>
-        <h1>miljeet national park</h1>
-        <h1>just two hours by </h1>
-        <h1>passenger or car</h1>
-        <h1>ferry from</h1>
-        <h1>Durbonvik </h1>
-        
+    <>
+    <div id="loader" className='loader py-[25vh] px-[10vw] h-[100%] w-[100%] fixed z-999 bg-[#0B0B0B]'>
+      <div className="line ">
+        <div id="line1-part1">
+          <h5 ref={href}>00</h5>
+          <h6>- 100 {" "} </h6>
+        </div>
+        <h1 className='text-[6.8vw] mx-[20px] font-semibold uppercase font'> Your</h1>
       </div>
+      <div className="line ">
+      <h1 className='text-[6.8vw] font-semibold uppercase'>Web Experiences</h1>
+    </div>
+    <div className="line ">
+    <h1 className='text-[6.8vw] font-semibold uppercase pr-2'>is loading right</h1>
+    <h2>NOW</h2>
+
+  </div>
+    </div>
+    <div id="main">
+      <div id="page1" ></div>
+      <div id="page2"></div>
       <div id="page3"></div>
     </div>
+    </>
   )
 }
 
