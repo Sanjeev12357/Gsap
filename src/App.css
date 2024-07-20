@@ -4,10 +4,21 @@ body{
   height:100%;
   color:white;
   overflow-x: hidden;
-  font-family: "Plain Light";
+  
   background-color: black;
 }
 
+#crsr{
+  height:2.3vw;
+  width:2.3vw;
+  border-radius: 50%;
+ border:1px solid rgba(255, 255, 255, 0.866);
+  position:fixed;
+  z-index: 9999;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+
+}
 
 
 #page1{
@@ -26,6 +37,7 @@ body{
  justify-content: flex-start;
   height:fit-content;
   overflow: hidden;
+  font-family: url("../public/plain-light-webfont.ttf");
 }
 
 #line1-part1{
@@ -39,7 +51,7 @@ body{
 #line1-part1 h5, #line1-part1 h6{
   font-size: 3vw;
   font-weight: 100;
-  font-family:'silk serif';
+  font-family:"silk serif";
 
 
  
@@ -90,3 +102,41 @@ body{
     opacity: 0;
   }
 }
+
+.logo{
+  font-family: "silk serif";
+}
+
+#nav-part2{
+  display: flex ;
+  align-items:center;
+  justify-content:center;
+  gap:3vw;
+
+}
+#nav-part2 h4{
+  font-size:0.8vw;
+  font-weight:500;
+
+}
+
+.hero{
+  
+  width:72%;
+  margin-left:27%;
+
+}
+.hero:nth-child(2){
+  margin-top:18vh;
+}
+.hero h1{
+  font-size:7.2vw;
+  font-family: url("../public/plain-light-webfont.ttf");
+  font-weight: 600;
+  text-transform: uppercase;  
+  line-height:7.2vw;
+
+}
+
+
+
